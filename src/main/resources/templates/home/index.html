@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="thymeleaf.org" th:replace="~{template :: layout (~{:: main})}">
+
+<body>
+	<main>
+		<script src="/content/doneTask.js"></script>
+		<div th:each="task : ${tasks}" class="container">
+			<div>
+				<a th:href="@{'/tasks/'+${task.getID}}">
+					<h2 th:text="${'#' + task.getID} + ${' ' + task.getTitle}"></h2>
+				</a>
+				<h3 th:text="${(task.Status ? 'Feito' : 'Pendente')}"></h3>
+				<p th:text="${task.getContent}"></p>
+				<button th:value="${task.getID}" onclick="DoneTask(this.getAttribute('value'))" id="button"
+					class="btn btn-outline-success">Concluir</button>
+			</div>
+			<hr>
+
+		</div>
+	</main>
+
+</body>
+
+</html>
