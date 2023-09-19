@@ -1,9 +1,10 @@
 <html lang="pt-br" xmlns="thymeleaf.org" th:replace="~{template :: layout (~{:: main})}">
 
 <body>
-	<script src="/content/donetask.js"></script>
+	
 	<main>
-		<div class="container">
+		<script src="/content/donetask.js"></script>
+		<div class="container border border-primary rounded p-3 ">
 			<h1 th:text="${task.getTitle()}"></h1>
 			<p th:text="${task.getContent}"></p>
 			<button th:value="${task.getID}" onclick="DoneTask(this.getAttribute('value'))"

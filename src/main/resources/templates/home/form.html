@@ -12,7 +12,7 @@
         </div>
         
             <div class="form-group">
-                <label for="content">Título: </label>
+                <label for="content">Descrição: </label>
                 <textarea name="content" id="content" class="form-control" cols="10" rows="10" placeholder="O que deverá ser feito?"></textarea>
             </div>
         
@@ -47,6 +47,7 @@
                 console.log(JSON.stringify(task))
                 r.json().then(t => {
                     console.log(t)
+                    location = '/tasks'
                 });
             })
 

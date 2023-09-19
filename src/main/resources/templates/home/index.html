@@ -4,17 +4,16 @@
 <body>
 	<main>
 		<script src="/content/doneTask.js"></script>
-		<div th:each="task : ${tasks}" class="container">
-			<div>
+		<div th:each="task : ${tasks}" class="container bg-sucess" >
+			<div th:attr="class=${(task.Status ? 'border border-success' : 'border border-warning')} + ' rounded p-2 mt-1' ">
 				<a th:href="@{'/tasks/'+${task.getID}}">
 					<h2 th:text="${'#' + task.getID} + ${' ' + task.getTitle}"></h2>
 				</a>
-				<h3 th:text="${(task.Status ? 'Feito' : 'Pendente')}"></h3>
+				<span th:text="${(task.Status ? 'Feito' : 'Pendente')}" th:attr="class=${(task.Status ? 'badge badge-success' : 'badge badge-warning')}"></span>
 				<p th:text="${task.getContent}"></p>
 				<button th:value="${task.getID}" onclick="DoneTask(this.getAttribute('value'))" id="button"
-					class="btn btn-outline-success">Concluir</button>
+					th:attr="class='btn btn-outline-success '+${(task.Status ? 'invisible' : 'visible' )}">Concluir</button>
 			</div>
-			<hr>
 
 		</div>
 	</main>
